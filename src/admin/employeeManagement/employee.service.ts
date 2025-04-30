@@ -4,6 +4,7 @@ import { Employee } from "./schema/employee.schema";
 import { Model } from "mongoose";
 import { EmployeeDto } from "./dto/employee.dto";
 import e from "express";
+import * as bcrypt from "bcrypt";
 
 @Injectable()
 export class EmployeeService
@@ -12,6 +13,8 @@ export class EmployeeService
 
   async create(EmployeeData:EmployeeDto):Promise<Employee>
   {
+    const hasedPassword = await bcrypt.hash(EmployeeData.password, 10);
+    EmployeeData.password=hasedPassword;
      return this.EmployeeModule.create(EmployeeData);
   }
 

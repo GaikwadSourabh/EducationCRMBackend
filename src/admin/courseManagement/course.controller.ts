@@ -3,6 +3,8 @@ import { CourseService } from "./course.service";
 import { FileInterceptor } from "@nestjs/platform-express";
 import { diskStorage } from "multer";
 import { extname } from "path";
+import { Observable } from "rxjs";
+import { Course } from "./schema/course.schema";
 
 @Controller('/admin/course')
 export class CourseController
@@ -60,4 +62,8 @@ export class CourseController
     {
          return this.courseService.delete(id);
     }
+
+   
+
+
 }

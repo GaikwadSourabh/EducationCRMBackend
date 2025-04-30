@@ -1,17 +1,25 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards } from "@nestjs/common";
 import { PurchaseService } from "./purchase.service";
 import { PurchaseDto } from "./dto/purchase.dto";
 import { Purchase } from "./schema/purchase.schema";
+import { EmployeeJwtGuard } from "../employeeAuth/employee-jwt.guard";
 
 @Controller('/purchase')
+// @UseGuards(EmployeeJwtGuard)
 export class PurchaseController
 {
    constructor(private purchaseService:PurchaseService){}
 
    @Post()
-   create(@Body()data:PurchaseDto):Promise<Purchase>
+   create(@Body()data:PurchaseDto,@Query('emp_email') emp_email:string):Promise<Purchase>
    {
-      return this.purchaseService.create(data);
+      return this.purchaseService.create(data,emp_email);
+   }
+
+   @Get('details')
+   findPurchaseDetails(@Query('email') email:string)
+   {
+      return this.purchaseService.findusercourse(email);
    }
 
    @Get()
@@ -37,4 +45,6 @@ export class PurchaseController
    {
      return this.purchaseService.delete(id);
    }
+
+  
 }

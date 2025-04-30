@@ -5,10 +5,17 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CourseSchema } from './admin/courseManagement/schema/course.schema';
 import { CourseModule } from './admin/courseManagement/course.module';
 import { EmployeeModule } from './admin/employeeManagement/employee.module';
-import { PurchaseModule } from './users/purchase/purchse.module';
+import { PurchaseModule } from './employee/purchase/purchse.module';
+import { InquryModule } from './employee/inquary/inqury.module';
+import { EmployeeAuthModule } from './employee/employeeAuth/employee-auth.module';
+import { UsersModule } from './admin/users/users.module';
+import { FeedbackModule } from './admin/feedback/feedback.module';
+import { EmpOrderModule } from './admin/emp-orders/emp-order.module';
+import { DashboardModule } from './admin/dashboard/dashboard.module';
 
 @Module({
-  imports: [ MongooseModule.forRoot('mongodb://localhost:27017/education-crm'),CourseModule,EmployeeModule,PurchaseModule],
+  imports: [EmployeeAuthModule, MongooseModule.forRoot('mongodb://localhost:27017/education-crm'),CourseModule,EmployeeModule,
+    PurchaseModule,InquryModule,UsersModule,FeedbackModule,EmpOrderModule,DashboardModule],
   controllers: [AppController],
   providers: [AppService],
 })
