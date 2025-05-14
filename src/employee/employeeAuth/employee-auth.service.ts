@@ -9,7 +9,7 @@ import * as bcrypt from 'bcrypt';
 export class employeeAuthService
 {
 
-    constructor(@InjectModel(Employee.name) private employeeModule:Model<Employee>,private jwtService:JwtService){}
+  constructor(@InjectModel(Employee.name) private employeeModule:Model<Employee>,private jwtService:JwtService){}
 
   async validateEmployee(email:string,password:string):Promise<any>
   {
@@ -18,6 +18,7 @@ export class employeeAuthService
     {
         throw new UnauthorizedException('Employee Not Found')
     }
+    
     const isMatch= await bcrypt.compare(password,employee.password)
 
     if(!isMatch)

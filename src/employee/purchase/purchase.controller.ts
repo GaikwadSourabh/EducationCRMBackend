@@ -16,6 +16,7 @@ export class PurchaseController
       return this.purchaseService.create(data,emp_email);
    }
 
+   @UseGuards(EmployeeJwtGuard)
    @Get('details')
    findPurchaseDetails(@Query('email') email:string)
    {
@@ -46,5 +47,4 @@ export class PurchaseController
      return this.purchaseService.delete(id);
    }
 
-  
 }

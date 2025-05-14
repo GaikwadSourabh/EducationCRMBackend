@@ -5,7 +5,7 @@ import { employeeAuthService } from "./employee-auth.service";
 export class EmployeeAuthController
 {
 
-    constructor(private emploeeAuthService:employeeAuthService){}
+  constructor(private emploeeAuthService:employeeAuthService){}
 
   @Post('login')
   async login(@Body()body:{email:string,password:string})

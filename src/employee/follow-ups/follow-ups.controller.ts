@@ -11,6 +11,6 @@ export class FollowUpsController
       @Query('empEmail') empEmail: string,
       @Query('followUpDate') followUpDate: string,) 
       {
-      return this.followUpsService.getMyFollowUps(empEmail, followUpDate);
-    }
+          return this.followUpsService.getMyFollowUps(empEmail, followUpDate);
+      }
 }

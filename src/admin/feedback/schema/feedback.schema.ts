@@ -18,6 +18,9 @@ export class Feedback extends Document
 
    @Prop()
    date_of_feedback:Date;
+
+   @Prop()
+   city:string;
 }
 
 export const FeedBackSchema = SchemaFactory.createForClass(Feedback);

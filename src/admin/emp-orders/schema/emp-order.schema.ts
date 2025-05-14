@@ -12,6 +12,8 @@ export class EmpOrder extends Document
 
     @Prop()
     order_id:string;
+
+
 }
 
 export const  EmpSchema = SchemaFactory.createForClass(EmpOrder);

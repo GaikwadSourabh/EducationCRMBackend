@@ -51,6 +51,12 @@ export class CourseController
         return this.courseService.findOne(id);
     }
 
+    @Get('findbyname/:name')
+    findByname(@Param('name')name:string)
+    {
+        return this.courseService.findByname(name)
+    }
+
     @Put(':id')
     update(@Param('id') id:string,@Body() data:any)
     {
@@ -62,8 +68,5 @@ export class CourseController
     {
          return this.courseService.delete(id);
     }
-
-   
-
 
 }

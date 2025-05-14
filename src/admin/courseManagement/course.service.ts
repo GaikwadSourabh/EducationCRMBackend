@@ -56,5 +56,13 @@ export class CourseService
     return deletedCourse;
   }
 
+  async findByname(name:string):Promise<Course>
+  {
+    const course= await this.courseModel.findOne({name: new RegExp(`^${name}$`, 'i')}).exec();
+    if (!course) {
+      throw new Error(`Course with name ${name} not found`);
+    }
+    return course;
+  }
  
 }

@@ -1,4 +1,4 @@
-import { IsBoolean, IsNumber, IsString } from "class-validator";
+import { IsBoolean, IsNumber, IsString, Matches } from "class-validator";
 
 
 export class UsersDto
@@ -12,12 +12,14 @@ export class UsersDto
     @IsString()
     city:string;
 
-    @IsString()
+     @Matches(/^\d{10}$/, {
+            message: 'Phone must be exactly 10 digits',
+          })
     phoneno:number;
 
     @IsBoolean()
-    ban_status:boolean;
+    ban_status: boolean = false;
 
-    @IsNumber()
-    password:number
+    @IsString()
+    password:string;
 }

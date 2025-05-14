@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Matches } from "class-validator";
 import { Document } from "mongoose";
 
 
@@ -22,7 +23,10 @@ export class Users extends Document
     @Prop({required:true})
     password:string;
 
-    @Prop({required:true})
+
+   
+      @Prop({required:true})
+
     phoneno:number;
 
 }
